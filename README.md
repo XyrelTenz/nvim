@@ -1,6 +1,5 @@
 
-# Neovim
-
+<!-- # Neovim -->
 ## Installation
  > Install requires Neovim nightly but might works on latest stable release. Always review the code before installing a configuration.
 
