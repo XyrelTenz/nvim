@@ -1,9 +1,42 @@
-**This repo is supposed to be used as config by NvChad users!**
 
-- The main nvchad repo (NvChad/NvChad) is used as a plugin by this repo.
-- So you just import its modules , like `require "nvchad.options" , require "nvchad.mappings"`
-- So you can delete the .git from this repo ( when you clone it locally ) or fork it :)
+# Neovim
 
-# Credits
+## Installation
+ > Install requires Neovim nightly but might works on latest stable release. Always review the code before installing a configuration.
 
-1) Lazyvim starter https://github.com/LazyVim/starter as nvchad's starter was inspired by Lazyvim's . It made a lot of things easier!
+ > Make sure you delete or backup your old neovim configuration to somewhere safe before installing this one.
+
+
+### Backup for linux & MacOS
+
+```bash
+# required
+mv ~/.config/nvim{,.bak}
+
+# optional but recommended
+mv ~/.local/share/nvim{,.bak}
+mv ~/.local/state/nvim{,.bak}
+mv ~/.cache/nvim{,.bak}
+```
+
+### Backup for Windows
+
+```bash
+# required
+Move-Item $env:LOCALAPPDATA\nvim $env:LOCALAPPDATA\nvim.bak
+
+# optional but recommended
+Move-Item $env:LOCALAPPDATA\nvim-data $env:LOCALAPPDATA\nvim-data.bak
+```
+
+### Installation for Linux & MacOS
+
+```bash
+git clone https://github.com/XyrelTenz/nvim.git ~/.config/nvim
+```
+
+### Installation for Windows
+
+```bash
+git clone https://github.com/XyrelTenz/nvim.git $env:LOCALAPPDATA\nvim
+```
