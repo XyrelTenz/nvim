@@ -35,3 +35,9 @@ require "autocmds"
 vim.schedule(function()
   require "mappings"
 end)
+
+--- Hide Line Numbers
+vim.o.number = false
+vim.o.relativenumber = false
+vim.opt.fillchars:append { vert = " " }
+vim.opt.showtabline = 0
