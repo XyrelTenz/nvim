@@ -12,13 +12,26 @@ map("n", "<leader>ca", function()
   vim.lsp.buf.code_action()
 end, { desc = "LSP code action" })
 
+-- Telescope
+map("n", "<leader>fr", function()
+  require("telescope.builtin").oldfiles()
+end, { desc = "Recent Files" })
+
+map("n", "<leader>fp", function()
+  require("telescope").extensions.projects.projects {}
+end, { desc = "Find Projects" })
+
+map("n", "<leader>fc", function()
+  require("telescope.builtin").find_files { cwd = vim.fn.stdpath "config" }
+end, { desc = "Configuration" })
+
 map({ "n", "t" }, "<A-i>", function()
   require("nvchad.term").toggle {
     pos = "float",
     id = "floatTerm",
     float_opts = {
-      row = 0.35,
-      col = 0.35,
+      row = 0.5,
+      col = 0.5,
       width = 0.5,
       height = 0.5,
     },

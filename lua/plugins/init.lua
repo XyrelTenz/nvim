@@ -48,6 +48,28 @@ return {
   },
 
   {
+    "ahmedkhalf/project.nvim",
+    lazy = false,
+    config = function()
+      require("project_nvim").setup {
+        -- manual_mode = true, -- Set to true if you don't want it to auto-cd
+        detection_methods = { "lsp", "pattern" },
+        patterns = {
+          ".git",
+          "_darcs",
+          ".hg",
+          ".bzr",
+          ".svn",
+          "Makefile",
+          "package.json",
+          "pubspec.yaml",
+          "build.gradle.kts",
+        },
+      }
+    end,
+  },
+
+  {
     "giuxtaposition/blink-cmp-copilot",
     dependencies = { "copilot.lua" },
   },

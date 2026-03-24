@@ -1,6 +1,7 @@
 local nvlsp = require "nvchad.configs.lspconfig"
 
 local servers = { "html", "cssls", "ts_ls", "tailwindcss", "luals", "kotlin_lsp" }
+require("telescope").load_extension "projects"
 
 for _, lsp in ipairs(servers) do
   vim.lsp.config(lsp, {
