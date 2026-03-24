@@ -1,5 +1,11 @@
 vim.g.base46_cache = vim.fn.stdpath "data" .. "/base46/"
 vim.g.mapleader = " "
+-- Deprecated
+if vim.lsp.get_clients then
+  vim.lsp.buf_get_clients = function(bufnr)
+    return vim.lsp.get_clients { bufnr = bufnr }
+  end
+end
 
 -- bootstrap lazy and all plugins
 local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"

@@ -9,6 +9,12 @@ M.base46 = {
   transparent = true,
 }
 
+M.mappings = {
+  user = {
+    "custom.mappings",
+  },
+}
+
 M.general = {
   n = {
     ["<leader>tt"] = {

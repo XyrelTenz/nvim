@@ -25,6 +25,11 @@ map("n", "<leader>fc", function()
   require("telescope.builtin").find_files { cwd = vim.fn.stdpath "config" }
 end, { desc = "Configuration" })
 
+-- Copilot
+map("i", "<C-Tab>", function()
+  require("blink.cmp").accept()
+end, { desc = "Accept Suggestion" })
+
 map({ "n", "t" }, "<A-i>", function()
   require("nvchad.term").toggle {
     pos = "float",

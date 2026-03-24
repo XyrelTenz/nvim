@@ -36,6 +36,8 @@ opt.wrap = true
 opt.linebreak = true
 opt.spelllang = "en_nz"
 opt.showtabline = 2
+-- Copilot
+vim.g.copilot_no_tab_map = true
 
 -- -- Set statusline
 -- opt.laststatus = 0
