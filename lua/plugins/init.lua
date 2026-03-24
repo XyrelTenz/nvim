@@ -37,7 +37,37 @@ return {
       },
     },
   },
+  {
+    "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    event = "InsertEnter",
+    opts = {
+      suggestion = { enabled = false },
+      panel = { enabled = false },
+    },
+  },
 
+  {
+    "giuxtaposition/blink-cmp-copilot",
+    dependencies = { "copilot.lua" },
+  },
+
+  {
+    "saghen/blink.cmp",
+    opts = {
+      sources = {
+        default = { "lsp", "path", "snippets", "buffer", "copilot" },
+        providers = {
+          copilot = {
+            name = "copilot",
+            module = "blink-cmp-copilot",
+            score_offset = 100,
+            async = true,
+          },
+        },
+      },
+    },
+  },
   -- test new blink
   { import = "nvchad.blink.lazyspec" },
 
