@@ -83,27 +83,5 @@ map("v", "<A-k>", ":<C-u>execute \"'<,'>move '<-\" . (v:count1 + 1)<cr>gv=gv", {
 
 -- Lazygit
 map("n", "<leader>gg", function()
-  -- Create a buffer for the terminal
-  local buf = vim.api.nvim_create_buf(false, true)
-
-  -- Calculate window size (80% of screen)
-  local width = math.ceil(vim.o.columns * 0.8)
-  local height = math.ceil(vim.o.lines * 0.8)
-
-  -- Open a floating window
-  vim.api.nvim_open_win(buf, true, {
-    relative = "editor",
-    width = width,
-    height = height,
-    col = math.ceil((vim.o.columns - width) / 2),
-    row = math.ceil((vim.o.lines - height) / 2),
-    style = "minimal",
-    border = "rounded",
-  })
-
-  -- Start LazyGit in that buffer
-  vim.fn.termopen "lazygit"
-
-  -- Automatically enter insert mode
-  vim.cmd "startinsert"
-end, { desc = "Git Open LazyGit (Native)" })
+  require("snacks").lazygit.open()
+end, { desc = "Lazygit" })
