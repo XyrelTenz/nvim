@@ -1,15 +1,9 @@
-local M = {}
+local map = vim.keymap.set
 
--- TODO: Will fix the acception suggestion
-M.copilot = {
-  i = {
-    ["<C-l>"] = {
-      function()
-        require("blink.cmp").accept()
-      end,
-      "Blink Accept (includes Copilot)",
-    },
-  },
-}
-
-return M
+map("i", "<C-Tab>", function()
+  if require("copilot.suggestion").is_visible() then
+    require("copilot.suggestion").accept()
+  else
+    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Tab>", true, false, true), "n", false)
+  end
+end, { desc = "Copilot Accept Suggestion" })

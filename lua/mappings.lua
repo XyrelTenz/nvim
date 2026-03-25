@@ -26,9 +26,9 @@ map("n", "<leader>fc", function()
 end, { desc = "Configuration" })
 
 -- Copilot
-map("i", "<C-Tab>", function()
-  require("blink.cmp").accept()
-end, { desc = "Accept Suggestion" })
+map("i", "<S-a>", function()
+  require("copilot.suggestion").accept()
+end, { desc = "Copilot Accept" })
 
 map({ "n", "t" }, "<A-i>", function()
   require("nvchad.term").toggle {
