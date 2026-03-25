@@ -8,7 +8,11 @@ map("n", ";", ":", { desc = "CMD enter command mode" })
 map("i", "jk", "<ESC>")
 
 -- Code Action
-map("n", "<leader>ca", function()
+-- map("n", "<leader>ca", function()
+--   vim.lsp.buf.code_action()
+-- end, { desc = "LSP code action" })
+--
+map("n", "<C-a>", function()
   vim.lsp.buf.code_action()
 end, { desc = "LSP code action" })
 
@@ -26,10 +30,10 @@ map("n", "<leader>fc", function()
 end, { desc = "Configuration" })
 
 -- Copilot
-map("i", "<S-a>", function()
-  require("copilot.suggestion").accept()
-end, { desc = "Copilot Accept" })
-
+-- map("i", "<S-a>", function()
+--   require("copilot.suggestion").accept()
+-- end, { desc = "Copilot Accept" })
+--
 map({ "n", "t" }, "<A-i>", function()
   require("nvchad.term").toggle {
     pos = "float",

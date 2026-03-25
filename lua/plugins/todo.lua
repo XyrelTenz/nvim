@@ -1,7 +1,9 @@
+-- TODO: Test
 return {
   "folke/todo-comments.nvim",
   cmd = "TodoTelescope",
-  event = "BufRead",
+  dependencies = { "nvim-lua/plenary.nvim" },
+  event = { "BufReadPost", "BufNewFile" },
   keys = {
     {
       "<leader>fd",

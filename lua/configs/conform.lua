@@ -5,6 +5,7 @@ local options = {
     html = { "prettier" },
     -- dart = { "lsp" },
     kotlin = { "ktfmt" },
+    java = { "google_java_format" },
   },
 
   format_on_save = {

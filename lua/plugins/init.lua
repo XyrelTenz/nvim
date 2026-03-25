@@ -25,7 +25,7 @@ return {
         vim.keymap.set("n", "h", api.node.navigate.parent_close, opts "Close Directory")
         vim.keymap.set("n", "<CR>", api.node.open.edit, opts "Open")
       end,
-      view = { adaptive_size = true, side = "right" },
+      view = { adaptive_size = true, side = "left" },
     },
   },
 
@@ -67,7 +67,6 @@ return {
       }
     end,
   },
-
   {
     "nvim-treesitter/nvim-treesitter",
     opts = {

@@ -34,6 +34,7 @@ return {
       fvm = true,
       dev_log = {
         enabled = false,
+        notify_errors = true,
         open_cmd = "15split",
       },
       outline = {
@@ -45,9 +46,7 @@ return {
         auto_open_browser = false,
       },
       lsp = {
-        -- Pass NvChad's capabilities (essential for completion)
         capabilities = nvlsp.capabilities,
-        -- Pass NvChad's on_attach (essential for keybinds)
         on_attach = nvlsp.on_attach,
         settings = {
           showTodos = true,
