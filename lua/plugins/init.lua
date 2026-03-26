@@ -44,7 +44,6 @@ return {
       panel = { enabled = false },
     },
   },
-
   {
     "saghen/blink.cmp",
     opts = {

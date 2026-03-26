@@ -70,8 +70,8 @@ return {
   lazy = false,
   opts = {
     dashboard = {
-      width = 100,
-      pane_gap = 20,
+      width = 75,
+      pane_gap = 10,
       autokeys = "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ",
       preset = {
         keys = {
@@ -114,10 +114,10 @@ return {
         {
           pane = 1,
           section = "terminal",
-          cmd = "img2art ~/.config/nvim/images/hq.png --threshold 50 --scale .34 --quant 16 --with-color",
+          cmd = "img2art ~/.config/nvim/images/hq.png --threshold 65 --scale .34 --quant 16 --with-color",
           height = 27,
           width = 100,
-          indent = 20,
+          indent = 0,
         },
         {
           pane = 2,
@@ -129,7 +129,7 @@ return {
               text = {
                 { "    ", hl = "DiagnosticHint" },
                 { "[F] Files", hl = "Normal" },
-                { "", width = 14 },
+                { "", width = 20 },
                 { "    ", hl = "Number" },
                 { "[D] Database", hl = "Normal" },
               },
@@ -139,7 +139,7 @@ return {
               text = {
                 { "    ", hl = "DiagnosticHint" },
                 { "[R] Recent", hl = "Normal" },
-                { "", width = 13 },
+                { "", width = 19 },
                 { "    ", hl = "Number" },
                 { "[C] Config", hl = "Normal" },
               },
@@ -149,7 +149,7 @@ return {
               text = {
                 { "󰒲    ", hl = "Label" },
                 { "[L] Lazy", hl = "Normal" },
-                { "", width = 15 },
+                { "", width = 21 },
                 { "    ", hl = "Number" },
                 { "[Q] Quit", hl = "Normal" },
               },
@@ -174,10 +174,8 @@ return {
   },
   config = function(_, opts)
     require("snacks").setup(opts)
-    vim.api.nvim_set_hl(0, "SnacksDashboardKey", { link = "Constant" })
-    vim.api.nvim_set_hl(0, "SnacksDashboardTitle", { link = "Keyword" })
-    vim.api.nvim_set_hl(0, "SnacksDashboardHeader", { link = "Comment" })
-    -- Optional: Color for the Startup time
-    vim.api.nvim_set_hl(0, "SnacksDashboardStartup", { link = "Special" })
+
+    local nvc_color = vim.api.nvim_get_hl(0, { name = "FolderIcon" })
+    vim.api.nvim_set_hl(0, "SnacksDashboardSpecial", { fg = nvc_color.fg })
   end,
 }

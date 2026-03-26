@@ -11,7 +11,8 @@ return {
     require("flutter-tools").setup {
       ui = {
         border = "rounded",
-        notification_style = "nvim-notify",
+        -- notification_style = "nvim-notify",
+        notification_style = "native",
       },
       decorations = {
         statusline = {
@@ -34,7 +35,6 @@ return {
       fvm = true,
       dev_log = {
         enabled = false,
-        notify_errors = true,
         open_cmd = "15split",
       },
       outline = {

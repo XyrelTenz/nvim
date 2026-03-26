@@ -7,6 +7,15 @@ if vim.lsp.get_clients then
   end
 end
 
+-- Automatically toggle transparency on VimEnter if not already set
+vim.api.nvim_create_autocmd("VimEnter", {
+  callback = function()
+    if not vim.g.transparency then
+      require("base46").toggle_transparency()
+    end
+  end,
+})
+
 -- bootstrap lazy and all plugins
 local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
 
