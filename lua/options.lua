@@ -20,8 +20,8 @@ if vim.fn.has "win32" == 1 or vim.fn.has "win64" == 1 then
 end
 
 -- UI/General
-opt.number = true
-opt.relativenumber = true
+opt.number = false
+opt.relativenumber = false
 opt.ignorecase = true
 opt.cursorline = true
 opt.clipboard = "unnamedplus"
@@ -35,7 +35,9 @@ opt.scrolloff = 12
 opt.wrap = true
 opt.linebreak = true
 opt.spelllang = "en_nz"
-opt.showtabline = 2
+opt.showtabline = 0
+opt.fillchars:append { vert = " " }
+
 -- Copilot
 vim.g.copilot_no_tab_map = true
 

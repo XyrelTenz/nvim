@@ -8,6 +8,7 @@ M.mappings = require "custom.mappings"
 M.base46 = {
   theme = "kanagawa-dragon",
   transparent = true,
+  theme_toggle = { "kanagawa-dragon", "onenord" },
 }
 
 M.mappings = {
@@ -29,7 +30,12 @@ M.general = {
 -- M.nvdash = { load_on_startup = true }
 M.ui = {
   tabufline = {
-    enabled = false, -- Fixed from 'enableb' to 'enabled'
+    enabled = true,
+  },
+  statusline = {
+    theme = "minimal",
+    -- theme = "default",
+    separator_style = "default",
   },
 }
 

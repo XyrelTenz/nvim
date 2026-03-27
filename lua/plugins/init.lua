@@ -4,6 +4,10 @@ return {
     event = "BufWritePre",
     opts = require "configs.conform",
   },
+  {
+    "NvChad/ui",
+    lazy = false,
+  },
 
   {
     "neovim/nvim-lspconfig",
