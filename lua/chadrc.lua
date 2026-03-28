@@ -3,40 +3,41 @@
 
 ---@type ChadrcConfig
 local M = {}
-M.mappings = require "custom.mappings"
+M.mappings = require("custom.mappings")
 
 M.base46 = {
-  theme = "kanagawa-dragon",
-  transparent = true,
-  theme_toggle = { "kanagawa-dragon", "onenord" },
+	theme = "ashes",
+	transparent = true,
+	theme_toggle = { "ashes", "ashes" },
 }
 
 M.mappings = {
-  user = {
-    "custom.mappings",
-  },
+	user = {
+		"custom.mappings",
+	},
 }
 
 M.general = {
-  n = {
-    ["<leader>tt"] = {
-      function()
-        require("base46").toggle_transparency()
-      end,
-      "Toggle transparency",
-    },
-  },
+	n = {
+		["<leader>tt"] = {
+			function()
+				require("base46").toggle_transparency()
+			end,
+			"Toggle transparency",
+		},
+	},
 }
 -- M.nvdash = { load_on_startup = true }
 M.ui = {
-  tabufline = {
-    enabled = true,
-  },
-  statusline = {
-    theme = "minimal",
-    -- theme = "default",
-    separator_style = "default",
-  },
+	tabufline = {
+		enabled = true,
+		lazyload = true,
+	},
+	statusline = {
+		theme = "minimal",
+		-- theme = "default",
+		separator_style = "default",
+	},
 }
 
 return M
