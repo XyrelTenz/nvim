@@ -7,6 +7,8 @@ local options = {
 		kotlin = { "ktfmt" },
 		java = { "google_java_format" },
 		typescript = { "prettier" },
+		go = { "goimports", "golines" },
+		sql = { "sqlfmt", "sql-formatter" },
 	},
 
 	format_on_save = {

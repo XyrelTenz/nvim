@@ -1,7 +1,5 @@
-require "nvchad.mappings"
-
+require("nvchad.mappings")
 local map = vim.keymap.set
-
 map("n", ";", ":", { desc = "CMD enter command mode" })
 map("i", "jk", "<ESC>")
 
@@ -9,48 +7,48 @@ map("i", "jk", "<ESC>")
 -- map("n", "<leader>ca", function()
 --   vim.lsp.buf.code_action()
 -- end, { desc = "LSP code action" })
---
-map("n", "<C-a>", function()
-  vim.lsp.buf.code_action()
-end, { desc = "LSP code action" })
+
+map("n", "<leader>ca", function()
+	vim.lsp.buf.code_action()
+end, { desc = "LSP Code Action" })
 
 -- Telescope
 map("n", "<leader>fr", function()
-  require("telescope.builtin").oldfiles()
+	require("telescope.builtin").oldfiles()
 end, { desc = "Recent Files" })
 
 map("n", "<leader>fp", function()
-  require("telescope").extensions.projects.projects {}
+	require("telescope").extensions.projects.projects({})
 end, { desc = "Find Projects" })
 
 map("n", "<leader>fc", function()
-  require("telescope.builtin").find_files { cwd = vim.fn.stdpath "config" }
+	require("telescope.builtin").find_files({ cwd = vim.fn.stdpath("config") })
 end, { desc = "Configuration" })
 
 -- Copilot
--- map("i", "<S-a>", function()
---   require("copilot.suggestion").accept()
--- end, { desc = "Copilot Accept" })
+map("i", "<C-a>", function()
+	require("copilot.suggestion").accept()
+end, { desc = "Copilot Accept" })
 --
 map({ "n", "t" }, "<A-i>", function()
-  require("nvchad.term").toggle {
-    pos = "float",
-    id = "floatTerm",
-    float_opts = {
-      row = 0.5,
-      col = 0.5,
-      width = 0.5,
-      height = 0.5,
-    },
-  }
+	require("nvchad.term").toggle({
+		pos = "float",
+		id = "floatTerm",
+		float_opts = {
+			row = 0.5,
+			col = 0.5,
+			width = 0.5,
+			height = 0.5,
+		},
+	})
 end, { desc = "terminal toggle floating term" })
 
 -- Transprent Background
 map(
-  "n",
-  "<leader>tt",
-  ":lua require('base46').toggle_transparency()<CR>",
-  { noremap = true, silent = true, desc = "Toggle Background Transparency" }
+	"n",
+	"<leader>tt",
+	":lua require('base46').toggle_transparency()<CR>",
+	{ noremap = true, silent = true, desc = "Toggle Background Transparency" }
 )
 
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
@@ -79,7 +77,15 @@ map("i", "<A-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move Up" })
 map("v", "<A-j>", ":<C-u>execute \"'<,'>move '>+\" . v:count1<cr>gv=gv", { desc = "Move Down" })
 map("v", "<A-k>", ":<C-u>execute \"'<,'>move '<-\" . (v:count1 + 1)<cr>gv=gv", { desc = "Move Up" })
 
+-- Go
+map("n", "<leader>gtr", ":GoTest<CR>", { desc = "Run test for current function" })
+map("n", "<leader>gtf", ":GoTestFile<CR>", { desc = "Run all tests in file" })
+map("n", "<leader>gtp", ":GoTestPkg<CR>", { desc = "Run all tests in package" })
+map("n", "<leader>gtc", ":GoCoverage -t<CR>", { desc = "Toggle test coverage signs" })
+map("n", "<leader>gr", ":GoRun<CR>", { desc = "Go Run Project" })
+map("n", "<leader>gs", ":GoStop<CR>", { desc = "Go Stop Project" })
+
 -- Lazygit
 map("n", "<leader>gg", function()
-  require("snacks").lazygit.open()
+	require("snacks").lazygit.open()
 end, { desc = "Lazygit" })
