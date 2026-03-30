@@ -21,7 +21,7 @@ return {
 			},
 			ui = {
 				border = "rounded",
-				notification_style = "native",
+				-- notification_style = "native",
 			},
 			decorations = {
 				statusline = {
@@ -68,6 +68,7 @@ return {
 					completeFunctionCalls = true,
 					renameFilesWithClasses = "prompt",
 					updateImportsOnRename = true,
+					dart_code_metrics = true,
 				},
 			},
 		})

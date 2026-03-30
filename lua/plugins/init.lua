@@ -15,7 +15,6 @@ return {
 			require("configs.lspconfig")
 		end,
 	},
-
 	{
 		"nvim-tree/nvim-tree.lua",
 		opts = {
