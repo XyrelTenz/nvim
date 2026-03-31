@@ -100,6 +100,7 @@ return {
 				"javascript",
 				"dart",
 				"gopls",
+				"swift",
 			},
 		},
 	},
