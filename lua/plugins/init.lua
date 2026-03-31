@@ -84,8 +84,8 @@ return {
 		},
 		config = function()
 			require("commitmate").setup({
-				open_lazygit = false,
-				ping_message = "CommitMate.nvim is ready 🤝",
+				open_lazygit = true,
+				ping_message = "CommitMate.nvim is ready",
 			})
 		end,
 	},
