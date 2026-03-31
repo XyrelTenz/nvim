@@ -35,8 +35,9 @@ M.ui = {
 	},
 	statusline = {
 		-- theme = "minimal",
+		-- theme = "vscode_colored",
 		theme = "default",
-		separator_style = "arrow",
+		separator_style = "round",
 	},
 }
 
