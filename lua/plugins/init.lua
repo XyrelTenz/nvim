@@ -74,6 +74,7 @@ return {
 	},
 
 	{ import = "nvchad.blink.lazyspec" },
+	-- Auto Give Commit Messages
 	{
 		"ajatdarojat45/commitmate.nvim",
 		lazy = false,
