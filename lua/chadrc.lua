@@ -6,9 +6,9 @@ local M = {}
 M.mappings = require("custom.mappings")
 
 M.base46 = {
-	theme = "chocolate",
+	theme = "chadtain",
 	transparent = true,
-	theme_toggle = { "chocolate", "chocolate" },
+	theme_toggle = { "chadtain", "chadtain" },
 }
 
 M.mappings = {
@@ -34,9 +34,9 @@ M.ui = {
 		lazyload = true,
 	},
 	statusline = {
-		theme = "minimal",
-		-- theme = "default",
-		separator_style = "default",
+		-- theme = "minimal",
+		theme = "default",
+		separator_style = "arrow",
 	},
 }
 
