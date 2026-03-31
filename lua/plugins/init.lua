@@ -74,7 +74,20 @@ return {
 	},
 
 	{ import = "nvchad.blink.lazyspec" },
-
+	{
+		"ajatdarojat45/commitmate.nvim",
+		lazy = false,
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"CopilotC-Nvim/CopilotChat.nvim",
+		},
+		config = function()
+			require("commitmate").setup({
+				open_lazygit = false,
+				ping_message = "CommitMate.nvim is ready 🤝",
+			})
+		end,
+	},
 	{
 		"ahmedkhalf/project.nvim",
 		lazy = false,
