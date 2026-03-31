@@ -67,7 +67,6 @@ return {
 		build = "cargo build --release",
 		opts = {
 			sources = {
-				-- Removed 'copilot' from the sources list
 				default = { "lsp", "path", "snippets", "buffer" },
 			},
 		},
