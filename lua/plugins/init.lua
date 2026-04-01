@@ -18,6 +18,10 @@ return {
 	{
 		"nvim-tree/nvim-tree.lua",
 		opts = {
+			filters = {
+				custom = { "node_modules", "target", "build", "dist", "out" },
+				dotfiles = true,
+			},
 			on_attach = function(bufnr)
 				local api = require("nvim-tree.api")
 				local function opts(desc)

@@ -7,6 +7,7 @@ local options = {
 		kotlin = { "ktfmt" },
 		java = { "google_java_format" },
 		typescript = { "prettier" },
+		vue = { "prettier" },
 		go = { "goimports", "golines" },
 		sql = { "sqlfmt", "sql-formatter" },
 	},
