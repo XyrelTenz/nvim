@@ -1,6 +1,5 @@
 local nvlsp = require("nvchad.configs.lspconfig")
 local lspconfig = require("lspconfig")
-
 vim.lsp.config("*", {
 	on_init = nvlsp.on_init,
 	on_attach = nvlsp.on_attach,
@@ -41,8 +40,11 @@ for _, lsp in ipairs(servers) do
 	vim.lsp.config(lsp, {})
 end
 
-vim.lsp.config("kotlin_language_server", {
-	root_markers = { "settings.gradle", "build.gradle", "build.gradle.kts", ".git" },
+vim.lsp.config("kotlin_lsp", {
+	on_attach = nvlsp.on_attach,
+	capabilities = nvlsp.capabilities,
+	on_init = nvlsp.on_init,
+	root_dir = vim.fs.root(0, { "settings.gradle.kts", "build.gradle.kts", "settings.gradle", "build.gradle", ".git" }),
 })
 
 vim.lsp.enable({
@@ -51,7 +53,7 @@ vim.lsp.enable({
 	"ts_ls",
 	"tailwindcss",
 	"luals",
-	"kotlin_language_server",
+	"kotlin_lsp",
 	"dartls",
 	"jdtls",
 	"gopls",

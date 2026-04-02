@@ -120,4 +120,53 @@ return {
 			},
 		},
 	},
+
+	{
+		"AlexandrosAlexiou/kotlin.nvim",
+		ft = { "kotlin" },
+		dependencies = {
+			"neovim/nvim-lspconfig",
+		},
+		config = function()
+			local nvlsp = require("nvchad.configs.lspconfig")
+
+			require("kotlin").setup({
+				-- Pass NvChad's LSP mappings and capabilities
+				on_attach = nvlsp.on_attach,
+				capabilities = nvlsp.capabilities,
+
+				root_markers = {
+					"gradlew",
+					".git",
+					"mvnw",
+					"settings.gradle",
+				},
+
+				-- Use the bundled JRE (let the plugin/Mason handle it)
+				jre_path = nil,
+
+				-- Auto-detect from project
+				jdk_for_symbol_resolution = nil,
+
+				jvm_args = {
+					"-Xmx4g",
+				},
+
+				inlay_hints = {
+					enabled = true,
+					parameters = true,
+					parameters_compiled = true,
+					parameters_excluded = false,
+					types_property = true,
+					types_variable = true,
+					function_return = true,
+					function_parameter = true,
+					lambda_return = true,
+					lambda_receivers_parameters = true,
+					value_ranges = true,
+					kotlin_time = true,
+				},
+			})
+		end,
+	},
 }

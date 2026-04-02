@@ -8,7 +8,7 @@ map("i", "jk", "<ESC>")
 --   vim.lsp.buf.code_action()
 -- end, { desc = "LSP code action" })
 
-map("n", "<leader>ca", function()
+map("n", "<A-a>", function()
 	vim.lsp.buf.code_action()
 end, { desc = "LSP Code Action" })
 
