@@ -61,15 +61,4 @@ vim.lsp.enable({
 	"vue_ls",
 })
 
-vim.lsp.handlers["textDocument/definition"] = function(_, result, ctx, config)
-	if not result or vim.tbl_isempty(result) then
-		return
-	end
-	if vim.tbl_islist(result) and #result > 1 then
-		vim.lsp.util.jump_to_location(result[1], "utf-8")
-	else
-		vim.lsp.util.jump_to_location(result, "utf-8")
-	end
-end
-
 require("telescope").load_extension("projects")

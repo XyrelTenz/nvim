@@ -89,3 +89,39 @@ map("n", "<leader>gs", ":GoStop<CR>", { desc = "Go Stop Project" })
 map("n", "<leader>gg", function()
 	require("snacks").lazygit.open()
 end, { desc = "Lazygit" })
+
+-- Gradle
+map("n", "<leader>gr", function()
+	local current_file = vim.api.nvim_buf_get_name(0)
+	local root_file = vim.fs.find({ "gradlew" }, {
+		upward = true,
+		path = vim.fs.dirname(current_file),
+	})[1]
+
+	if root_file then
+		local project_root = vim.fs.dirname(root_file)
+
+		-- Check if it's Spring Boot by looking for 'bootRun' in build.gradle
+		local build_gradle = project_root .. "/build.gradle.kts"
+		local run_cmd = "./gradlew run"
+
+		local f = io.open(build_gradle, "r")
+		if f then
+			local content = f:read("*all")
+			f:close()
+			if content:find("org.springframework.boot") then
+				run_cmd = "./gradlew bootRun"
+			end
+		end
+
+		local command = string.format('clear && cd "%s" && %s', project_root, run_cmd)
+
+		require("nvchad.term").toggle({
+			pos = "float",
+			id = "floatTerm",
+			cmd = command,
+		})
+	else
+		vim.notify("Error: gradlew not found", vim.log.levels.ERROR)
+	end
+end, { desc = "Run Gradle/SpringBoot Project" })
