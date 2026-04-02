@@ -29,7 +29,8 @@ end, { desc = "Configuration" })
 map("i", "<C-a>", function()
 	require("copilot.suggestion").accept()
 end, { desc = "Copilot Accept" })
---
+
+-- Terminal Toggle
 map({ "n", "t" }, "<A-i>", function()
 	require("nvchad.term").toggle({
 		pos = "float",
@@ -91,6 +92,8 @@ map("n", "<leader>gg", function()
 end, { desc = "Lazygit" })
 
 -- Gradle
+local map = vim.keymap.set
+
 map("n", "<leader>gr", function()
 	local current_file = vim.api.nvim_buf_get_name(0)
 	local root_file = vim.fs.find({ "gradlew" }, {
@@ -100,28 +103,42 @@ map("n", "<leader>gr", function()
 
 	if root_file then
 		local project_root = vim.fs.dirname(root_file)
-
-		-- Check if it's Spring Boot by looking for 'bootRun' in build.gradle
-		local build_gradle = project_root .. "/build.gradle.kts"
+		local build_gradle_kts = project_root .. "/build.gradle.kts"
+		local build_gradle = project_root .. "/build.gradle"
 		local run_cmd = "./gradlew run"
 
-		local f = io.open(build_gradle, "r")
-		if f then
-			local content = f:read("*all")
-			f:close()
-			if content:find("org.springframework.boot") then
-				run_cmd = "./gradlew bootRun"
+		local function check_spring(file_path)
+			local f = io.open(file_path, "r")
+			if f then
+				local content = f:read("*all")
+				f:close()
+				return content:find("org.springframework.boot")
 			end
+			return false
+		end
+
+		if check_spring(build_gradle_kts) or check_spring(build_gradle) then
+			run_cmd = "./gradlew bootRun"
 		end
 
 		local command = string.format('clear && cd "%s" && %s', project_root, run_cmd)
 
-		require("nvchad.term").toggle({
+		local term_portal = require("nvchad.term")
+		local term_id = "gradle_float_term"
+
+		if vim.g.nvchad_terms and vim.g.nvchad_terms[term_id] then
+			local old_term = vim.g.nvchad_terms[term_id]
+			if vim.api.nvim_buf_is_valid(old_term.buf) then
+				vim.api.nvim_buf_delete(old_term.buf, { force = true })
+			end
+		end
+
+		term_portal.toggle({
 			pos = "float",
-			id = "floatTerm",
+			id = term_id,
 			cmd = command,
 		})
 	else
-		vim.notify("Error: gradlew not found", vim.log.levels.ERROR)
+		vim.notify("Error: gradlew not found in parent directories", vim.log.levels.ERROR)
 	end
 end, { desc = "Run Gradle/SpringBoot Project" })
