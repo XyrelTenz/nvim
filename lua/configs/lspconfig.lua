@@ -44,7 +44,10 @@ vim.lsp.config("kotlin_lsp", {
 	on_attach = nvlsp.on_attach,
 	capabilities = nvlsp.capabilities,
 	on_init = nvlsp.on_init,
-	root_dir = vim.fs.root(0, { "settings.gradle.kts", "build.gradle.kts", "settings.gradle", "build.gradle", ".git" }),
+	root_dir = vim.fs.root(
+		0,
+		{ "settings.gradle.kts", "build.gradle.kts", "settings.gradle", "build.gradle", ".git", "module.yaml" }
+	),
 })
 
 vim.lsp.enable({

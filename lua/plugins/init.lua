@@ -18,6 +18,13 @@ return {
 	{
 		"nvim-tree/nvim-tree.lua",
 		opts = {
+			sync_root_with_cwd = true,
+			respect_buf_cwd = true,
+			update_focused_file = {
+				enable = true,
+				update_root = true,
+			},
+			prefer_startup_root = true,
 			filters = {
 				custom = { "node_modules", "target", "build", "dist", "out" },
 				dotfiles = true,
@@ -98,7 +105,7 @@ return {
 		config = function()
 			require("project_nvim").setup({
 				detection_methods = { "lsp", "pattern" },
-				patterns = { ".git", "package.json", "pubspec.yaml", "build.gradle.kts" },
+				patterns = { ".git", "package.json", "pubspec.yaml", "build.gradle.kts", "module.yaml" },
 			})
 		end,
 	},

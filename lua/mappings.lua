@@ -102,7 +102,6 @@ map("n", "<leader>gr", function()
 	if root_file then
 		local project_root = vim.fs.dirname(root_file)
 
-		-- Check if it's Spring Boot by looking for 'bootRun' in build.gradle
 		local build_gradle = project_root .. "/build.gradle.kts"
 		local run_cmd = "./gradlew run"
 
