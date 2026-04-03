@@ -86,6 +86,18 @@ map("n", "<leader>gtc", ":GoCoverage -t<CR>", { desc = "Toggle test coverage sig
 map("n", "<leader>gr", ":GoRun<CR>", { desc = "Go Run Project" })
 map("n", "<leader>gs", ":GoStop<CR>", { desc = "Go Stop Project" })
 
+-- Amper Project Mappings
+-- map("n", "<leader>ki", ":!amper init<CR>", { desc = "Amper: Init Project" })
+map("n", "<leader>kb", ":!amper build<CR>", { desc = "Amper: Build Project" })
+map("n", "<leader>ar", ":!amper run<CR>", { desc = "Amper: Run App" })
+map("n", "<leader>at", ":!amper test<CR>", { desc = "Amper: Run Tests" })
+
+-- Introspection & Maintenance
+map("n", "<leader>as", ":!amper show settings<CR>", { desc = "Amper: Show Settings" })
+map("n", "<leader>km", ":!amper show modules<CR>", { desc = "Amper: Show Modules" })
+map("n", "<leader>kd", ":!amper show dependencies<CR>", { desc = "Amper: Show Deps" })
+map("n", "<leader>kc", ":!amper clean<CR>", { desc = "Amper: Clean Build" })
+
 -- Lazygit
 map("n", "<leader>gg", function()
 	require("snacks").lazygit.open()
