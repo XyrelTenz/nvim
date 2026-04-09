@@ -14,6 +14,7 @@ return {
 				"module.yaml",
 				"amper.bat",
 				"amper.sh",
+				".agent",
 			},
 		})
 	end,

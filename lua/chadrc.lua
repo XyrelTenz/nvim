@@ -6,9 +6,9 @@ local M = {}
 M.mappings = require("custom.mappings")
 
 M.base46 = {
-	theme = "chadtain",
+	theme = "chocolate",
 	transparent = true,
-	theme_toggle = { "chadtain", "chadtain" },
+	theme_toggle = { "chocolate", "chocolate" },
 }
 
 M.mappings = {

@@ -120,7 +120,7 @@ return {
 				{
 					pane = 1,
 					section = "terminal",
-					cmd = "/home/xyreltenz/.local/bin/img2art ~/.config/nvim/images/hq.png --threshold 65 --scale .34 --quant 16 --with-color",
+					cmd = "/home/xyreltenz/.local/bin/img2art ~/.config/nvim/images/hq.png --threshold 40 --scale .34 --quant 16 --with-color",
 					height = 27,
 					width = 100,
 					indent = 0,
