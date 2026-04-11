@@ -93,7 +93,7 @@ map("n", "<leader>ar", ":!amper run<CR>", { desc = "Amper: Run App" })
 map("n", "<leader>at", ":!amper test<CR>", { desc = "Amper: Run Tests" })
 
 -- Introspection & Maintenance
-map("n", "<leader>as", ":!amper show settings<CR>", { desc = "Amper: Show Settings" })
+map("n", "<leader>ks", ":!amper show settings<CR>", { desc = "Amper: Show Settings" })
 map("n", "<leader>km", ":!amper show modules<CR>", { desc = "Amper: Show Modules" })
 map("n", "<leader>kd", ":!amper show dependencies<CR>", { desc = "Amper: Show Deps" })
 map("n", "<leader>kc", ":!amper clean<CR>", { desc = "Amper: Clean Build" })

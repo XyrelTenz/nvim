@@ -44,7 +44,8 @@ return {
 			},
 			fvm = true,
 			dev_log = {
-				enabled = false,
+				filter = nil,
+				enabled = true,
 				open_cmd = "15split",
 			},
 			outline = {

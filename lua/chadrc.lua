@@ -6,9 +6,9 @@ local M = {}
 M.mappings = require("custom.mappings")
 
 M.base46 = {
-	theme = "chocolate",
+	theme = "kanagawa-dragon",
 	transparent = true,
-	theme_toggle = { "chocolate", "chocolate" },
+	theme_toggle = { "kanagawa-dragon", "kanagawa-dragon" },
 }
 
 M.mappings = {
@@ -30,6 +30,10 @@ M.general = {
 -- M.nvdash = { load_on_startup = true }
 M.ui = {
 	tabufline = {
+		enabled = true,
+		lazyload = true,
+	},
+	windbar = {
 		enabled = true,
 		lazyload = true,
 	},
