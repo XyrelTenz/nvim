@@ -10,6 +10,7 @@ local options = {
 		vue = { "prettier" },
 		go = { "goimports", "golines" },
 		sql = { "sqlfmt", "sql-formatter" },
+		rust = { "rustfmt" },
 	},
 
 	format_on_save = {

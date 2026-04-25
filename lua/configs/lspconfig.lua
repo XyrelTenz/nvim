@@ -34,7 +34,7 @@ vim.lsp.config("vue_ls", {
 	},
 })
 
-local servers = { "html", "cssls", "tailwindcss", "luals", "jdtls", "sqls", "gopls", "dartls" }
+local servers = { "html", "cssls", "tailwindcss", "luals", "jdtls", "sqls", "gopls", "dartls", "slint_lsp" }
 
 for _, lsp in ipairs(servers) do
 	vim.lsp.config(lsp, {})
@@ -50,6 +50,21 @@ vim.lsp.config("kotlin_lsp", {
 	),
 })
 
+vim.lsp.config("rust_analyzer", {
+	settings = {
+		["rust-analyzer"] = {
+			cargo = {
+				allFeatures = true,
+			},
+
+			checkOnSave = true,
+			check = {
+				command = "clippy",
+			},
+		},
+	},
+})
+
 vim.lsp.enable({
 	"html",
 	"cssls",
@@ -62,6 +77,8 @@ vim.lsp.enable({
 	"gopls",
 	"sqls",
 	"vue_ls",
+	"rust_analyzer",
+	"slint_lsp",
 })
 
 require("telescope").load_extension("projects")

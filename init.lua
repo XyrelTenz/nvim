@@ -6,7 +6,6 @@ if vim.lsp.get_clients then
 		return vim.lsp.get_clients({ bufnr = bufnr })
 	end
 end
-
 -- Automatically toggle transparency on VimEnter if not already set
 vim.api.nvim_create_autocmd("VimEnter", {
 	callback = function()
@@ -50,3 +49,10 @@ require("autocmds")
 vim.schedule(function()
 	require("mappings")
 end)
+
+--- Add filetype for Slint files
+vim.filetype.add({
+	extension = {
+		slint = "slint",
+	},
+})

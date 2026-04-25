@@ -16,6 +16,9 @@ return {
 		end,
 	},
 	{
+		"slint-ui/vim-slint",
+	},
+	{
 		"nvim-tree/nvim-tree.lua",
 		opts = {
 			sync_root_with_cwd = true,
@@ -82,6 +85,7 @@ return {
 			},
 		},
 	},
+	{ "kosayoda/nvim-lightbulb", lazy = false, priority = 1000, opts = { autocmd = { enabled = true } } },
 
 	{ import = "nvchad.blink.lazyspec" },
 	-- Auto Give Commit Messages
@@ -98,6 +102,13 @@ return {
 				ping_message = "CommitMate.nvim is ready",
 			})
 		end,
+	},
+	-- Typer
+	{
+		"nvzone/typr",
+		dependencies = "nvzone/volt",
+		opts = {},
+		cmd = { "Typr", "TyprStats" },
 	},
 	{
 		"ahmedkhalf/project.nvim",
@@ -124,6 +135,9 @@ return {
 				"javascript",
 				"dart",
 				"gopls",
+				"rust",
+				"toml",
+				"yaml",
 			},
 		},
 	},
