@@ -51,12 +51,13 @@ vim.lsp.config("kotlin_lsp", {
 })
 
 vim.lsp.config("rust_analyzer", {
+	cmd = { "rust-analyzer" },
+	root_markers = { "Cargo.toml", ".git" },
 	settings = {
 		["rust-analyzer"] = {
 			cargo = {
 				allFeatures = true,
 			},
-
 			checkOnSave = true,
 			check = {
 				command = "clippy",

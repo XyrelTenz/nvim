@@ -77,14 +77,17 @@ return {
 		build = ':lua require("go.install").update_all_sync()',
 	},
 	{
-		"saghen/blink.cmp",
-		build = "cargo build --release",
-		opts = {
-			sources = {
-				default = { "lsp", "path", "snippets", "buffer" },
-			},
-		},
-	},
+        "saghen/blink.cmp",
+        version = "*",
+        dependencies = {
+            "saghen/blink.lib", 
+          },
+        opts = {
+            sources = {
+                default = { "lsp", "path", "snippets", "buffer" },
+            },
+        },
+    },
 	{ "kosayoda/nvim-lightbulb", lazy = false, priority = 1000, opts = { autocmd = { enabled = true } } },
 
 	{ import = "nvchad.blink.lazyspec" },
