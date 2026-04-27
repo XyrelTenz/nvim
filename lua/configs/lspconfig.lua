@@ -83,3 +83,18 @@ vim.lsp.enable({
 })
 
 require("telescope").load_extension("projects")
+
+vim.api.nvim_create_autocmd("LspAttach", {
+	callback = function(args)
+		local bufnr = args.buf
+		local client = vim.lsp.get_client_by_id(args.data.client_id)
+		if nvlsp.on_attach then
+			nvlsp.on_attach(client, bufnr)
+		end
+
+		local opts = { buffer = bufnr }
+		vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+
+		vim.bo[bufnr].tagfunc = "v:lua.vim.lsp.tagfunc"
+	end,
+})
