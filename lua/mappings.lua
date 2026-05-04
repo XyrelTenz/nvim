@@ -138,3 +138,18 @@ map("n", "<leader>gr", function()
 		vim.notify("Error: gradlew not found", vim.log.levels.ERROR)
 	end
 end, { desc = "Run Gradle/SpringBoot Project" })
+
+-- Rust
+local map = vim.keymap.set
+
+map("n", "<leader>cr", function()
+	require("nvchad.term").toggle({ pos = "float", id = "floatTerm", cmd = "cargo run" })
+end, { desc = "Cargo Run" })
+
+map("n", "<leader>ct", function()
+	require("nvchad.term").toggle({ pos = "float", id = "floatTerm", cmd = "cargo test" })
+end, { desc = "Cargo Test" })
+
+map("n", "<leader>cc", function()
+	require("nvchad.term").toggle({ pos = "float", id = "floatTerm", cmd = "cargo check" })
+end, { desc = "Cargo Check" })

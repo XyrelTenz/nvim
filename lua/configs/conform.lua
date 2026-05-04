@@ -11,6 +11,14 @@ local options = {
 		go = { "goimports", "golines" },
 		sql = { "sqlfmt", "sql-formatter" },
 		rust = { "rustfmt" },
+		qmljs = { "qmlformat" },
+		toml = { "tombi" },
+	},
+
+	formatters = {
+		qmlformat = {
+			command = "/usr/bin/qmlformat",
+		},
 	},
 
 	format_on_save = {

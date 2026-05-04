@@ -15,6 +15,7 @@ return {
 				"amper.bat",
 				"amper.sh",
 				".agent",
+				"flutter_yaml_bridge.yaml",
 			},
 		})
 	end,

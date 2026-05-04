@@ -25,7 +25,7 @@ return {
 			respect_buf_cwd = true,
 			update_focused_file = {
 				enable = true,
-				update_root = true,
+				-- update_root = true,
 			},
 			prefer_startup_root = true,
 			filters = {
@@ -77,19 +77,18 @@ return {
 		build = ':lua require("go.install").update_all_sync()',
 	},
 	{
-        "saghen/blink.cmp",
-        version = "*",
-        dependencies = {
-            "saghen/blink.lib", 
-          },
-        opts = {
-            sources = {
-                default = { "lsp", "path", "snippets", "buffer" },
-            },
-        },
-    },
+		"saghen/blink.cmp",
+		version = "*",
+		dependencies = {
+			"saghen/blink.lib",
+		},
+		opts = {
+			sources = {
+				default = { "lsp", "path", "snippets", "buffer" },
+			},
+		},
+	},
 	{ "kosayoda/nvim-lightbulb", lazy = false, priority = 1000, opts = { autocmd = { enabled = true } } },
-
 	{ import = "nvchad.blink.lazyspec" },
 	-- Auto Give Commit Messages
 	{
@@ -141,6 +140,7 @@ return {
 				"rust",
 				"toml",
 				"yaml",
+				"qmljs",
 			},
 		},
 	},
