@@ -11,7 +11,6 @@ local options = {
 		go = { "goimports", "golines" },
 		sql = { "sqlfmt", "sql-formatter" },
 		rust = { "rustfmt" },
-		qmljs = { "qmlformat" },
 		toml = { "tombi" },
 	},
 

@@ -15,9 +15,11 @@ return {
 			require("configs.lspconfig")
 		end,
 	},
+	--- Slint UI
 	{
 		"slint-ui/vim-slint",
 	},
+	--- Nvim Tree
 	{
 		"nvim-tree/nvim-tree.lua",
 		opts = {
@@ -25,7 +27,7 @@ return {
 			respect_buf_cwd = true,
 			update_focused_file = {
 				enable = true,
-				-- update_root = true,
+				update_root = true,
 			},
 			prefer_startup_root = true,
 			filters = {
@@ -45,7 +47,7 @@ return {
 			view = { adaptive_size = true, side = "left" },
 		},
 	},
-
+	--- Copilot
 	{
 		"zbirenbaum/copilot.lua",
 		cmd = "Copilot",
@@ -61,7 +63,7 @@ return {
 			panel = { enabled = false },
 		},
 	},
-
+	--- Golang
 	{
 		"ray-x/go.nvim",
 		dependencies = {
@@ -76,6 +78,7 @@ return {
 		ft = { "go", "gomod" },
 		build = ':lua require("go.install").update_all_sync()',
 	},
+	--- Blink CMP
 	{
 		"saghen/blink.cmp",
 		version = "*",
@@ -88,6 +91,7 @@ return {
 			},
 		},
 	},
+	--- Code Action Ligh Bulb
 	{ "kosayoda/nvim-lightbulb", lazy = false, priority = 1000, opts = { autocmd = { enabled = true } } },
 	{ import = "nvchad.blink.lazyspec" },
 	-- Auto Give Commit Messages
@@ -112,6 +116,7 @@ return {
 		opts = {},
 		cmd = { "Typr", "TyprStats" },
 	},
+	--- Project for Rooter
 	{
 		"ahmedkhalf/project.nvim",
 		lazy = false,
@@ -122,6 +127,7 @@ return {
 			})
 		end,
 	},
+	--- Nvim Tree Sitter
 	{
 		"nvim-treesitter/nvim-treesitter",
 		opts = {
@@ -140,7 +146,6 @@ return {
 				"rust",
 				"toml",
 				"yaml",
-				"qmljs",
 			},
 		},
 	},

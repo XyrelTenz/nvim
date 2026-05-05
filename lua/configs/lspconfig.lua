@@ -66,15 +66,6 @@ vim.lsp.config("rust_analyzer", {
 	},
 })
 
-vim.lsp.config("qmlls6", {
-	cmd = { "/usr/bin/qmlls6" },
-	filetypes = { "qml", "qmljs" },
-	on_init = nvlsp.on_init,
-	on_attach = nvlsp.on_attach,
-	capabilities = nvlsp.capabilities,
-	root_markers = { "CMakeLists.txt", ".git", "qmldir" },
-})
-
 vim.lsp.enable({
 	"html",
 	"cssls",
@@ -89,7 +80,6 @@ vim.lsp.enable({
 	"vue_ls",
 	"rust_analyzer",
 	"slint_lsp",
-	"qmlls6",
 })
 
 require("telescope").load_extension("projects")
