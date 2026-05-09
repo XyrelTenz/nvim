@@ -127,6 +127,42 @@ return {
 			})
 		end,
 	},
+
+	{
+		"folke/trouble.nvim",
+		cmd = "Trouble",
+		opts = {
+			auto_refresh = true,
+			auto_close = true,
+			auto_jump = false,
+			focus = false,
+			follow = true,
+			modes = {
+				diagnostics = {
+					filter = {
+						["not"] = { severity = vim.diagnostic.severity.HINT },
+					},
+				},
+			},
+		},
+		keys = {
+			{
+				"<leader>xx",
+				"<cmd>Trouble diagnostics toggle<cr>",
+				desc = "Project Diagnostics (Trouble)",
+			},
+			{
+				"<leader>xb",
+				"<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+				desc = "Buffer Diagnostics (Trouble)",
+			},
+			{
+				"<leader>cs",
+				"<cmd>Trouble symbols toggle focus=false<cr>",
+				desc = "Symbols (Trouble)",
+			},
+		},
+	},
 	--- Nvim Tree Sitter
 	{
 		"nvim-treesitter/nvim-treesitter",
