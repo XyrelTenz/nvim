@@ -12,6 +12,7 @@ local options = {
 		sql = { "sqlfmt", "sql-formatter" },
 		rust = { "rustfmt" },
 		toml = { "tombi" },
+		cpp = { "clang-format" },
 	},
 
 	formatters = {
