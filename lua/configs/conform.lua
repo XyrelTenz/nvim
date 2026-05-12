@@ -15,12 +15,6 @@ local options = {
 		cpp = { "clang-format" },
 	},
 
-	formatters = {
-		qmlformat = {
-			command = "/usr/bin/qmlformat",
-		},
-	},
-
 	format_on_save = {
 		timeout_ms = 2000,
 		lsp_fallback = true,

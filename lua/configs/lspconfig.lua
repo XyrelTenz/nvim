@@ -40,7 +40,8 @@ for _, lsp in ipairs(servers) do
 	vim.lsp.config(lsp, {})
 end
 
-vim.lsp.config("kotlin_lsp", {
+vim.lsp.config.kotlin_ls = {
+	cmd = { "kotlin-lsp" },
 	on_attach = nvlsp.on_attach,
 	capabilities = nvlsp.capabilities,
 	on_init = nvlsp.on_init,
@@ -48,7 +49,12 @@ vim.lsp.config("kotlin_lsp", {
 		0,
 		{ "settings.gradle.kts", "build.gradle.kts", "settings.gradle", "build.gradle", ".git", "module.yaml" }
 	),
-})
+	settings = {
+		intellij = {
+			buildTool = "gradle",
+		},
+	},
+}
 
 vim.lsp.config("rust_analyzer", {
 	cmd = { "rust-analyzer" },
@@ -73,6 +79,7 @@ vim.lsp.enable({
 	"tailwindcss",
 	"luals",
 	"kotlin_lsp",
+	"kotlin_ls",
 	"dartls",
 	"jdtls",
 	"gopls",

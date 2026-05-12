@@ -186,7 +186,7 @@ return {
 				"java",
 				"javascript",
 				"dart",
-				"gopls",
+				"go",
 				"rust",
 				"toml",
 				"yaml",
