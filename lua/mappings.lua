@@ -4,11 +4,11 @@ map("n", ";", ":", { desc = "CMD enter command mode" })
 map("i", "jk", "<ESC>")
 map("n", "gd", vim.lsp.buf.definition)
 
--- Code Action
--- map("n", "<leader>ca", function()
+-- Code Action map("n", "<leader>ca", function()
 --   vim.lsp.buf.code_action()
 -- end, { desc = "LSP code action" })
 
+--- Alternative Code Action mapping using Alt key
 map("n", "<A-a>", function()
 	vim.lsp.buf.code_action()
 end, { desc = "LSP Code Action" })
@@ -36,6 +36,7 @@ map({ "n", "t" }, "<A-i>", function()
 	require("nvchad.term").toggle({
 		pos = "float",
 		id = "floatTerm",
+		clear_cmd = true,
 		float_opts = {
 			row = 0.5,
 			col = 0.5,
@@ -142,6 +143,7 @@ end, { desc = "Run Gradle/SpringBoot Project" })
 -- Rust
 local map = vim.keymap.set
 
+--- Rust Cargo Commands
 map("n", "<leader>cr", function()
 	require("nvchad.term").toggle({ pos = "float", id = "floatTerm", cmd = "cargo run" })
 end, { desc = "Cargo Run" })
