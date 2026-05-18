@@ -15,10 +15,6 @@ return {
 			require("configs.lspconfig")
 		end,
 	},
-	--- Slint UI
-	{
-		"slint-ui/vim-slint",
-	},
 	--- Nvim Tree
 	{
 		"nvim-tree/nvim-tree.lua",
@@ -64,6 +60,7 @@ return {
 		},
 	},
 
+	--- Auto Tag
 	{
 		"windwp/nvim-ts-autotag",
 		ft = { "html", "javascript", "typescript", "javascriptreact", "typescriptreact", "svelte", "vue" },
@@ -135,7 +132,7 @@ return {
 			})
 		end,
 	},
-
+	--- Error Diagnostics
 	{
 		"folke/trouble.nvim",
 		cmd = "Trouble",
