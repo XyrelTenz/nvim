@@ -1,6 +1,4 @@
 require("nvchad.options")
-
--- add yours here!
 -- vim.g.mapleader = " "
 -- vim.g.maplocalleader = " "
 vim.g.user = os.getenv("USERNAME") or os.getenv("USER")
