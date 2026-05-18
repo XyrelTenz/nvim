@@ -82,7 +82,7 @@ return {
 						hidden = true,
 						action = ":lua Snacks.dashboard.pick('files')",
 					},
-					{ icon = " ", key = "d", desc = "Database", hidden = true, action = "enew | SQLua" },
+					{ icon = " ", key = "d", desc = "Database", hidden = true, action = "SQLua" },
 					{
 						icon = " ",
 						key = "r",

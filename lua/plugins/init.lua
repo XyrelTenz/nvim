@@ -15,6 +15,7 @@ return {
 			require("configs.lspconfig")
 		end,
 	},
+
 	--- Nvim Tree
 	{
 		"nvim-tree/nvim-tree.lua",
@@ -68,6 +69,7 @@ return {
 			require("nvim-ts-autotag").setup()
 		end,
 	},
+
 	--- Golang
 	{
 		"ray-x/go.nvim",
@@ -83,6 +85,7 @@ return {
 		ft = { "go", "gomod" },
 		build = ':lua require("go.install").update_all_sync()',
 	},
+
 	--- Blink CMP
 	{
 		"saghen/blink.cmp",
@@ -96,8 +99,10 @@ return {
 			},
 		},
 	},
+
 	--- Code Action Ligh Bulb
 	{ "kosayoda/nvim-lightbulb", lazy = false, priority = 1000, opts = { autocmd = { enabled = true } } },
+
 	{ import = "nvchad.blink.lazyspec" },
 	-- Auto Give Commit Messages
 	{
@@ -114,6 +119,7 @@ return {
 			})
 		end,
 	},
+
 	-- Typer
 	{
 		"nvzone/typr",
@@ -121,6 +127,7 @@ return {
 		opts = {},
 		cmd = { "Typr", "TyprStats" },
 	},
+
 	--- Project for Rooter
 	{
 		"ahmedkhalf/project.nvim",
@@ -132,6 +139,7 @@ return {
 			})
 		end,
 	},
+
 	--- Error Diagnostics
 	{
 		"folke/trouble.nvim",
@@ -150,23 +158,23 @@ return {
 				},
 			},
 		},
-		keys = {
-			{
-				"<leader>xx",
-				"<cmd>Trouble diagnostics toggle<cr>",
-				desc = "Project Diagnostics (Trouble)",
-			},
-			{
-				"<leader>xb",
-				"<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
-				desc = "Buffer Diagnostics (Trouble)",
-			},
-			{
-				"<leader>cs",
-				"<cmd>Trouble symbols toggle focus=false<cr>",
-				desc = "Symbols (Trouble)",
-			},
-		},
+		-- keys = {
+		-- 	{
+		-- 		"<leader>xx",
+		-- 		"<cmd>Trouble diagnostics toggle<cr>",
+		-- 		desc = "Project Diagnostics (Trouble)",
+		-- 	},
+		-- 	{
+		-- 		"<leader>xb",
+		-- 		"<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+		-- 		desc = "Buffer Diagnostics (Trouble)",
+		-- 	},
+		-- 	{
+		-- 		"<leader>cs",
+		-- 		"<cmd>Trouble symbols toggle focus=false<cr>",
+		-- 		desc = "Symbols (Trouble)",
+		-- 	},
+		-- },
 	},
 	--- Nvim Tree Sitter
 	{
