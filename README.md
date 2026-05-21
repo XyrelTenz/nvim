@@ -1,3 +1,6 @@
+## Previews
+![Neovim Preview 1](preview/preview1.png)
+![Neovim Preview 2](preview/preview2.png)
 
 <!-- # Neovim -->
 ## Installation
