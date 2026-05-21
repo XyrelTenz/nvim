@@ -1,5 +1,9 @@
 ## Previews
+
+  > Preview 1
 ![Neovim Preview 1](preview/preview1.png)
+
+  > Preview 2
 ![Neovim Preview 2](preview/preview2.png)
 
 <!-- # Neovim -->
