@@ -7,3 +7,10 @@ vim.diagnostic.config({
 	},
 	severity_sort = true,
 })
+
+vim.filetype.add({
+	extension = {
+		js = "javascriptreact",
+		ts = "typescriptreact",
+	},
+})

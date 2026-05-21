@@ -58,7 +58,17 @@ vim.lsp.config.kotlin_ls = {
 
 vim.lsp.config("rust_analyzer", {
 	cmd = { "rust-analyzer" },
-	root_markers = { "Cargo.toml", ".git" },
+
+	root_dir = function(filepath)
+		local is_flutter_project = vim.fs.root(filepath, "pubspec.yaml")
+
+		if is_flutter_project then
+			return vim.fs.root(filepath, { "Cargo.toml", "rust-project.json" })
+		else
+			return vim.fs.root(filepath, { "Cargo.toml", "rust-project.json", ".git" })
+		end
+	end,
+
 	settings = {
 		["rust-analyzer"] = {
 			cargo = {

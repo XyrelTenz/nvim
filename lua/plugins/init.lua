@@ -16,28 +16,6 @@ return {
 		end,
 	},
 
-	{
-		"windwp/nvim-ts-autotag",
-		ft = {
-			"javascript",
-			"javascriptreact",
-			"typescript",
-			"typescriptreact",
-			"vue",
-			"svelte",
-			"html",
-		},
-		config = function()
-			require("nvim-ts-autotag").setup({
-				opts = {
-					enable_close = true,
-					enable_rename = true,
-					enable_close_on_slash = false,
-				},
-			})
-		end,
-	},
-
 	--- Nvim Tree
 	{
 		"nvim-tree/nvim-tree.lua",

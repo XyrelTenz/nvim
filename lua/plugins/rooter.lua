@@ -16,6 +16,7 @@ return {
 				"amper.sh",
 				".agent",
 				"flutter_yaml_bridge.yaml",
+				"rust-project.json",
 			},
 		})
 	end,
