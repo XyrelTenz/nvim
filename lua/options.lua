@@ -4,8 +4,13 @@ require("nvchad.options")
 vim.g.user = os.getenv("USERNAME") or os.getenv("USER")
 
 local opt = vim.opt
--- opt.shell = "fish"
-opt.shell = "bash"
+if vim.fn.executable("zsh") == 1 then
+    opt.shell = "zsh"
+elseif vim.fn.executable("fish") == 1 then
+    opt.shell = "fish"
+else
+    opt.shell = "bash"
+end
 
 -- Set shell to PowerShell 7 if on Win32 or Win64
 if vim.fn.has("win32") == 1 or vim.fn.has("win64") == 1 then
