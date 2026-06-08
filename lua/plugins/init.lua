@@ -15,7 +15,6 @@ return {
 			require("configs.lspconfig")
 		end,
 	},
-
 	--- Nvim Tree
 	{
 		"nvim-tree/nvim-tree.lua",
@@ -92,7 +91,7 @@ return {
 	},
 
 	--- Code Action Ligh Bulb
-	{ "kosayoda/nvim-lightbulb", lazy = false, priority = 1000, opts = { autocmd = { enabled = true } } },
+	-- { "kosayoda/nvim-lightbulb", lazy = false, priority = 1000, opts = { autocmd = { enabled = true } } },
 
 	{ import = "nvchad.blink.lazyspec" },
 	-- Auto Give Commit Messages
@@ -112,12 +111,12 @@ return {
 	},
 
 	-- Typer
-	{
-		"nvzone/typr",
-		dependencies = "nvzone/volt",
-		opts = {},
-		cmd = { "Typr", "TyprStats" },
-	},
+	-- {
+	-- 	"nvzone/typr",
+	-- 	dependencies = "nvzone/volt",
+	-- 	opts = {},
+	-- 	cmd = { "Typr", "TyprStats" },
+	-- },
 
 	--- Project for Rooter
 	{
@@ -177,7 +176,7 @@ return {
 				"vimdoc",
 				"html",
 				"css",
-				"kotlin",
+				-- "kotlin",
 				"typescript",
 				"java",
 				"javascript",
