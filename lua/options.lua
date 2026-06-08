@@ -4,19 +4,32 @@ require("nvchad.options")
 vim.g.user = os.getenv("USERNAME") or os.getenv("USER")
 
 local opt = vim.opt
--- opt.shell = "fish"
-opt.shell = "zsh"
 
 -- Set shell to PowerShell 7 if on Win32 or Win64
-if vim.fn.has("win32") == 1 or vim.fn.has("win64") == 1 then
-	opt.shell = "powershell -NoLogo"
-	opt.shellcmdflag =
-		"-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;"
-	opt.shellredir = "-RedirectStandardOutput %s -NoNewWindow -Wait"
-	opt.shellpipe = "2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode"
-	opt.shellquote = ""
-	opt.shellxquote = ""
+local function set_system_shell()
+  if vim.fn.has("win32") == 1 or vim.fn.has("win64") == 1 then
+    opt.shell = "powershell -NoLogo"
+    opt.shellcmdflag =
+      "-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;"
+    opt.shellredir = "-RedirectStandardOutput %s -NoNewWindow -Wait"
+    opt.shellpipe = "2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode"
+    opt.shellquote = ""
+    opt.shellxquote = ""
+    return
+  end
+
+  local shells_to_try = { "zsh", "fish", "bash" }
+  for _, shell in ipairs(shells_to_try) do
+    if vim.fn.executable(shell) == 1 then
+      opt.shell = shell
+      return
+    end
+  end
+
+  opt.shell = "sh"
 end
+
+set_system_shell()
 
 -- UI/General
 opt.number = true
