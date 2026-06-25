@@ -8,27 +8,28 @@ return {
 		"NvChad/ui",
 		lazy = false,
 	},
-
 	{
 		"neovim/nvim-lspconfig",
 		config = function()
 			require("configs.lspconfig")
 		end,
 	},
-	--- Nvim Tree
 	{
 		"nvim-tree/nvim-tree.lua",
 		opts = {
 			sync_root_with_cwd = true,
-			respect_buf_cwd = true,
+			respect_buf_cwd = false,
 			update_focused_file = {
 				enable = true,
-				update_root = true,
+				update_root = false,
 			},
 			prefer_startup_root = true,
 			filters = {
 				custom = { "node_modules", "target", "build", "dist", "out" },
-				dotfiles = true,
+				dotfiles = false,
+			},
+			git = {
+				ignore = false,
 			},
 			on_attach = function(bufnr)
 				local api = require("nvim-tree.api")
@@ -40,10 +41,12 @@ return {
 				vim.keymap.set("n", "h", api.node.navigate.parent_close, opts("Close Directory"))
 				vim.keymap.set("n", "<CR>", api.node.open.edit, opts("Open"))
 			end,
-			view = { adaptive_size = true, side = "left" },
+			view = {
+				adaptive_size = true,
+				side = "right",
+			},
 		},
 	},
-	--- Copilot
 	{
 		"zbirenbaum/copilot.lua",
 		cmd = "Copilot",
@@ -59,8 +62,6 @@ return {
 			panel = { enabled = false },
 		},
 	},
-
-	--- Golang
 	{
 		"ray-x/go.nvim",
 		dependencies = {
@@ -75,8 +76,6 @@ return {
 		ft = { "go", "gomod" },
 		build = ':lua require("go.install").update_all_sync()',
 	},
-
-	--- Blink CMP
 	{
 		"saghen/blink.cmp",
 		version = "*",
@@ -89,12 +88,7 @@ return {
 			},
 		},
 	},
-
-	--- Code Action Ligh Bulb
-	-- { "kosayoda/nvim-lightbulb", lazy = false, priority = 1000, opts = { autocmd = { enabled = true } } },
-
 	{ import = "nvchad.blink.lazyspec" },
-	-- Auto Give Commit Messages
 	{
 		"ajatdarojat45/commitmate.nvim",
 		lazy = false,
@@ -109,28 +103,17 @@ return {
 			})
 		end,
 	},
-
-	-- Typer
-	-- {
-	-- 	"nvzone/typr",
-	-- 	dependencies = "nvzone/volt",
-	-- 	opts = {},
-	-- 	cmd = { "Typr", "TyprStats" },
-	-- },
-
-	--- Project for Rooter
 	{
 		"ahmedkhalf/project.nvim",
 		lazy = false,
 		config = function()
 			require("project_nvim").setup({
 				detection_methods = { "lsp", "pattern" },
-				patterns = { ".git", "package.json", "pubspec.yaml", "build.gradle.kts", "module.yaml" },
+				patterns = { ".git", "melos.yaml" },
+				ignore_lsp = { "rust_analyzer" },
 			})
 		end,
 	},
-
-	--- Error Diagnostics
 	{
 		"folke/trouble.nvim",
 		cmd = "Trouble",
@@ -148,25 +131,7 @@ return {
 				},
 			},
 		},
-		-- keys = {
-		-- 	{
-		-- 		"<leader>xx",
-		-- 		"<cmd>Trouble diagnostics toggle<cr>",
-		-- 		desc = "Project Diagnostics (Trouble)",
-		-- 	},
-		-- 	{
-		-- 		"<leader>xb",
-		-- 		"<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
-		-- 		desc = "Buffer Diagnostics (Trouble)",
-		-- 	},
-		-- 	{
-		-- 		"<leader>cs",
-		-- 		"<cmd>Trouble symbols toggle focus=false<cr>",
-		-- 		desc = "Symbols (Trouble)",
-		-- 	},
-		-- },
 	},
-	--- Nvim Tree Sitter
 	{
 		"nvim-treesitter/nvim-treesitter",
 		opts = {
@@ -176,11 +141,8 @@ return {
 				"vimdoc",
 				"html",
 				"css",
-				-- "kotlin",
 				"typescript",
-				"java",
 				"javascript",
-				"dart",
 				"go",
 				"rust",
 				"toml",
@@ -188,7 +150,25 @@ return {
 				"tsx",
 				"svelte",
 				"vue",
+				"qml",
 			},
 		},
+	},
+	{
+		"nvim-telescope/telescope.nvim",
+		opts = {
+			pickers = {
+				find_files = {
+					hidden = true,
+				},
+			},
+		},
+	},
+	{
+		"windwp/nvim-ts-autotag",
+		event = { "BufReadPre", "BufNewFile" },
+		config = function()
+			require("nvim-ts-autotag").setup()
+		end,
 	},
 }

@@ -34,38 +34,32 @@ vim.lsp.config("vue_ls", {
 	},
 })
 
-local servers = { "html", "cssls", "tailwindcss", "luals", "jdtls", "sqls", "gopls", "dartls", "slint_lsp" }
-
-for _, lsp in ipairs(servers) do
-	vim.lsp.config(lsp, {})
-end
-
--- vim.lsp.config.kotlin_ls = {
--- 	cmd = { "kotlin-lsp" },
--- 	on_attach = nvlsp.on_attach,
--- 	capabilities = nvlsp.capabilities,
--- 	on_init = nvlsp.on_init,
--- 	root_dir = vim.fs.root(
--- 		0,
--- 		{ "settings.gradle.kts", "build.gradle.kts", "settings.gradle", "build.gradle", ".git", "module.yaml" }
--- 	),
--- 	settings = {
--- 		intellij = {
--- 			buildTool = "gradle",
--- 		},
--- 	},
--- }
-
 vim.lsp.config("rust_analyzer", {
 	cmd = { "rust-analyzer" },
 
-	root_dir = function(filepath)
-		local is_flutter_project = vim.fs.root(filepath, "pubspec.yaml")
+	root_dir = function(bufnr, on_dir)
+		local filepath = vim.api.nvim_buf_get_name(bufnr)
 
-		if is_flutter_project then
-			return vim.fs.root(filepath, { "Cargo.toml", "rust-project.json" })
-		else
-			return vim.fs.root(filepath, { "Cargo.toml", "rust-project.json", ".git" })
+		local cargo_registry = vim.fn.expand("~/.cargo/registry")
+		local rustup_home = vim.fn.expand("~/.rustup")
+		if vim.startswith(filepath, cargo_registry)
+			or vim.startswith(filepath, rustup_home)
+			or vim.startswith(filepath, "/rustc")
+			or vim.startswith(filepath, "/nix/store") then
+			local clients = vim.lsp.get_clients({ name = "rust_analyzer" })
+			if #clients > 0 then
+				on_dir(clients[1].config.root_dir)
+				return
+			end
+			on_dir(vim.fn.getcwd())
+			return
+		end
+
+		local root = vim.fs.root(bufnr, { "Cargo.toml", "rust-project.json", ".git" })
+
+		local final_root = root or (filepath ~= "" and vim.fs.dirname(filepath)) or vim.fn.getcwd()
+		if final_root then
+			on_dir(final_root)
 		end
 	end,
 
@@ -88,15 +82,10 @@ vim.lsp.enable({
 	"ts_ls",
 	"tailwindcss",
 	"luals",
-	-- "kotlin_lsp",
-	-- "kotlin_ls",
-	"dartls",
-	"jdtls",
 	"gopls",
 	"sqls",
 	"vue_ls",
 	"rust_analyzer",
-	"slint_lsp",
 	"clangd",
 })
 

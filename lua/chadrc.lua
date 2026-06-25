@@ -1,14 +1,10 @@
--- This file needs to have same structure as nvconfig.lua
--- https://github.com/NvChad/ui/blob/v3.0/lua/nvconfig.lua
-
----@type ChadrcConfig
 local M = {}
 M.mappings = require("custom.mappings")
 
 M.base46 = {
-	theme = "kanagawa-dragon",
+	theme = "chadtain",
 	transparent = true,
-	theme_toggle = { "kanagawa-dragon", "kanagawa-dragon" },
+	theme_toggle = { "chadtain", "chadtain" },
 }
 
 M.mappings = {
@@ -27,7 +23,7 @@ M.general = {
 		},
 	},
 }
--- M.nvdash = { load_on_startup = true }
+
 M.ui = {
 	tabufline = {
 		enabled = true,
@@ -38,8 +34,6 @@ M.ui = {
 		lazyload = true,
 	},
 	statusline = {
-		-- theme = "minimal",
-		-- theme = "vscode_colored",
 		theme = "default",
 		separator_style = "round",
 	},
