@@ -1,5 +1,4 @@
 local nvlsp = require("nvchad.configs.lspconfig")
-local lspconfig = require("lspconfig")
 vim.lsp.config("*", {
 	on_init = nvlsp.on_init,
 	on_attach = nvlsp.on_attach,
@@ -7,6 +6,30 @@ vim.lsp.config("*", {
 })
 
 local vue_plugin_path = "/usr/lib/node_modules/@vue/typescript-plugin"
+
+vim.lsp.config("nixd", {
+	cmd = { "nixd" },
+	filetypes = { "nix" },
+	root_markers = { "flake.nix", "default.nix", ".git" },
+	settings = {
+		nixd = {
+			nixpkgs = {
+				expr = "import <nixpkgs> { }",
+			},
+			formatting = {
+				command = { "alejandra" },
+			},
+			options = {
+				nixos = {
+					expr = "(builtins.getFlake (builtins.toString ./.)).nixosConfigurations.XyrelTenz.options",
+				},
+				["home-manager"] = {
+					expr = "(builtins.getFlake (builtins.toString ./.)).nixosConfigurations.XyrelTenz.options.home-manager.users.type.getSubOptions []",
+				},
+			},
+		},
+	},
+})
 
 vim.lsp.config("ts_ls", {
 	filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
@@ -19,6 +42,11 @@ vim.lsp.config("ts_ls", {
 			},
 		},
 	},
+})
+
+vim.lsp.config("oxlint", {
+	cmd = { "oxlint", "--lsp" },
+	filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "vue" },
 })
 
 vim.lsp.config("vue_ls", {
@@ -42,10 +70,12 @@ vim.lsp.config("rust_analyzer", {
 
 		local cargo_registry = vim.fn.expand("~/.cargo/registry")
 		local rustup_home = vim.fn.expand("~/.rustup")
-		if vim.startswith(filepath, cargo_registry)
+		if
+			vim.startswith(filepath, cargo_registry)
 			or vim.startswith(filepath, rustup_home)
 			or vim.startswith(filepath, "/rustc")
-			or vim.startswith(filepath, "/nix/store") then
+			or vim.startswith(filepath, "/nix/store")
+		then
 			local clients = vim.lsp.get_clients({ name = "rust_analyzer" })
 			if #clients > 0 then
 				on_dir(clients[1].config.root_dir)
@@ -79,7 +109,9 @@ vim.lsp.config("rust_analyzer", {
 vim.lsp.enable({
 	"html",
 	"cssls",
+	"nixd",
 	"ts_ls",
+	"oxlint",
 	"tailwindcss",
 	"luals",
 	"gopls",
@@ -100,7 +132,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		end
 
 		local opts = { buffer = bufnr }
-		vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+		vim.keymap.set("n", "gd", function()
+			local ok, err = pcall(vim.lsp.buf.definition)
+			if not ok then
+				vim.notify("LSP not ready yet: " .. tostring(err), vim.log.levels.WARN)
+			end
+		end, opts)
 
 		vim.bo[bufnr].tagfunc = "v:lua.vim.lsp.tagfunc"
 	end,

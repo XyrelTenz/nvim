@@ -17,7 +17,7 @@ return {
 	{
 		"nvim-tree/nvim-tree.lua",
 		opts = {
-			sync_root_with_cwd = true,
+			sync_root_with_cwd = false,
 			respect_buf_cwd = false,
 			update_focused_file = {
 				enable = true,
@@ -25,7 +25,7 @@ return {
 			},
 			prefer_startup_root = true,
 			filters = {
-				custom = { "node_modules", "target", "build", "dist", "out" },
+				custom = { "^node_modules$", "^target$", "^build$", "^dist$", "^out$" },
 				dotfiles = false,
 			},
 			git = {
@@ -43,23 +43,8 @@ return {
 			end,
 			view = {
 				adaptive_size = true,
-				side = "right",
+				side = "left",
 			},
-		},
-	},
-	{
-		"zbirenbaum/copilot.lua",
-		cmd = "Copilot",
-		event = "InsertEnter",
-		opts = {
-			suggestion = {
-				enabled = true,
-				auto_trigger = true,
-				keymap = {
-					accept = "<C-l>",
-				},
-			},
-			panel = { enabled = false },
 		},
 	},
 	{
@@ -70,7 +55,11 @@ return {
 			"nvim-treesitter/nvim-treesitter",
 		},
 		config = function()
-			require("go").setup()
+			-- go.nvim's codelens.enable() API is not available in Neovim 0.11.1.
+			-- codelens is optional; keep gopls and formatting enabled without it.
+			require("go").setup({
+				lsp_codelens = false,
+			})
 		end,
 		event = { "CmdlineEnter" },
 		ft = { "go", "gomod" },
@@ -89,20 +78,6 @@ return {
 		},
 	},
 	{ import = "nvchad.blink.lazyspec" },
-	{
-		"ajatdarojat45/commitmate.nvim",
-		lazy = false,
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"CopilotC-Nvim/CopilotChat.nvim",
-		},
-		config = function()
-			require("commitmate").setup({
-				open_lazygit = true,
-				ping_message = "CommitMate.nvim is ready",
-			})
-		end,
-	},
 	{
 		"ahmedkhalf/project.nvim",
 		lazy = false,

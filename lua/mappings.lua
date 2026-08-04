@@ -21,10 +21,6 @@ map("n", "<leader>fc", function()
 	require("telescope.builtin").find_files({ cwd = vim.fn.stdpath("config") })
 end, { desc = "Configuration" })
 
-map("i", "<C-a>", function()
-	require("copilot.suggestion").accept()
-end, { desc = "Copilot Accept" })
-
 map({ "n", "t" }, "<A-i>", function()
 	require("nvchad.term").toggle({
 		pos = "float",
@@ -134,3 +130,10 @@ map("n", "<leader>rL", "<cmd>FlutterLogToggle<cr>", { desc = "Flutter Log" })
 map("n", "<leader>rc", "<cmd>FlutterLogClear<cr>", { desc = "Clear Flutter Log" })
 map("n", "<leader>ra", "<cmd>FlutterAttach<cr>", { desc = "Attach to App" })
 map("n", "<leader>rt", "<cmd>FlutterDevTools<cr>", { desc = "Flutter DevTools" })
+
+-- Tmux-style tab navigation (prefix Ctrl-b)
+map("n", "<C-b>c", "<cmd>tabnew<CR>", { desc = "tab new" })
+map("n", "<C-b>n", "<cmd>tabnext<CR>", { desc = "tab next" })
+map("n", "<C-b>p", "<cmd>tabprevious<CR>", { desc = "tab prev" })
+map("n", "<C-b>x", "<cmd>tabclose<CR>", { desc = "tab close" })
+map("n", "<C-b>&", "<cmd>tabclose<CR>", { desc = "tab close" })
