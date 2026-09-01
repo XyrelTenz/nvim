@@ -8,7 +8,12 @@ return {
 	config = function()
 		local nvlsp = require("nvchad.configs.lspconfig")
 
-		local flutter_bin = vim.fn.executable("flutter") == 1 and vim.fn.exepath("flutter") or nil
+			-- Keep Flutter Tools on the stable SDK that supports the workspace's
+			-- language features, while retaining PATH as a portable fallback.
+			local flutter_bin = vim.fn.expand("~/.cache/flutter_sdk/bin/flutter")
+			if vim.fn.executable(flutter_bin) ~= 1 then
+				flutter_bin = vim.fn.executable("flutter") == 1 and vim.fn.exepath("flutter") or nil
+			end
 
 		require("flutter-tools").setup({
 			flutter_path = flutter_bin,
