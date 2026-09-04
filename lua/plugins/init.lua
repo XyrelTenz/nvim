@@ -55,8 +55,6 @@ return {
 			"nvim-treesitter/nvim-treesitter",
 		},
 		config = function()
-			-- go.nvim's codelens.enable() API is not available in Neovim 0.11.1.
-			-- codelens is optional; keep gopls and formatting enabled without it.
 			require("go").setup({
 				lsp_codelens = false,
 			})
@@ -87,6 +85,39 @@ return {
 				patterns = { ".git", "melos.yaml" },
 				ignore_lsp = { "rust_analyzer" },
 			})
+		end,
+	},
+	{
+		"nvim-java/nvim-java",
+		ft = { "java", "jproperties" },
+		config = function()
+			local jdk_path = "/usr/lib/jvm/default"
+
+			require("java").setup({
+				jdk = {
+					version = "21",
+					path = jdk_path,
+					auto_install = false,
+				},
+			})
+
+			vim.lsp.config("jdtls", {
+				settings = {
+					java = {
+						configuration = {
+							runtimes = {
+								{
+									name = "JavaSE-21",
+									path = jdk_path,
+									default = true,
+								},
+							},
+						},
+					},
+				},
+			})
+
+			vim.lsp.enable("jdtls")
 		end,
 	},
 	{
@@ -126,6 +157,10 @@ return {
 				"svelte",
 				"vue",
 				"qml",
+			},
+			highlight = {
+				enable = true,
+				additional_vim_regex_highlighting = false,
 			},
 		},
 	},

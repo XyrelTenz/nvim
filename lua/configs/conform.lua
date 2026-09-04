@@ -16,6 +16,7 @@ local options = {
 		toml = { "tombi" },
 		cpp = { "clang-format" },
 		nix = { "alejandra" },
+		java = { "google-java-format" },
 	},
 
 	format_on_save = {
